@@ -1,18 +1,18 @@
-/**
- * SortWorker.java
+/*
+CSci364 - HW3, SortWorker.java
+Patrick Dougherty
+patrick.r.dougherty@und.edu
+26Mar2020
  */
 package server;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import api.Worker;
 
 /**
  * @author david
- *
+ * and a few modification by Patrick
  */
 class SortWorker<T extends Comparable<? super T>> extends Worker {
 	private static final long serialVersionUID = -4051898108461870504L;
@@ -23,9 +23,9 @@ class SortWorker<T extends Comparable<? super T>> extends Worker {
 	 * @param arr an array of items to be sorted 
 	 */
 	@SafeVarargs
-	SortWorker(int id, T ...arr) {
-		super(id, "SortWorker");
-		list.addAll(Arrays.asList(arr));
+	SortWorker(UUID id, T ...arr) {
+		super(id, "Sort");
+		Collections.addAll(list, arr);
 	}
 
 	/* (non-Javadoc)
@@ -40,21 +40,24 @@ class SortWorker<T extends Comparable<? super T>> extends Worker {
 	 * 
 	 * @return 
 	 */
-	List<T> getList() {
+	public List<T> getList() {
 		return list;
 	}
 
 	/**
 	 * Test harness
 	 * @param args There are no arguments.
-	 */
+	*/
 	public static void main(String[] args) {
-		SortWorker<String> sw1 = new SortWorker<String>(1, "cat", "mouse", "dog");
+		UUID id = UUID.randomUUID();
+		SortWorker<String> sw1 = new SortWorker<>(id, "cat", "mouse", "dog");
 		sw1.doWork();
 		System.out.println(sw1.list);
-		
-		SortWorker<Integer> sw2 = new SortWorker<Integer>(2, 3, 1, 5, 4);
+
+		id = UUID.randomUUID();
+		SortWorker<Integer> sw2 = new SortWorker<>(id, 3, 1, 5, 4);
 		sw2.doWork();
 		System.out.println(sw2.list);
 	}
+
 }

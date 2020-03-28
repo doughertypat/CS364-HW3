@@ -1,9 +1,13 @@
-/**
- * Worker.java
+/*
+CSci364 - HW3, Worker.java
+Patrick Dougherty
+patrick.r.dougherty@und.edu
+26Mar2020
  */
 package api;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * @author david apostal
@@ -11,14 +15,14 @@ import java.io.Serializable;
  */
 public abstract class Worker implements Serializable {
 	private static final long serialVersionUID = -1697662415894139584L;
-	private int taskId;
+	private UUID taskId;
 	private String taskName;
 	
 	/**
-	 * @param the task id for the work task
-	 * @param the name of this task
+	 * @param id the task id for the work task
+	 * @param name the name of this task
 	 */
-	public Worker(int id, String name) {
+	public Worker(UUID id, String name) {
 		taskId = id;
 		taskName = name;
 	}
@@ -28,7 +32,7 @@ public abstract class Worker implements Serializable {
 	 * @return the id of this worker. A unique value that distinguishes this 
 	 * instance of a Worker from all other instances.
 	 */
-	public int getTaskId() {
+	public UUID getTaskId() {
 		return taskId;
 	}
 	
@@ -45,4 +49,5 @@ public abstract class Worker implements Serializable {
 	 * volunteer client. 
 	 */
 	public abstract void doWork();
+
 }

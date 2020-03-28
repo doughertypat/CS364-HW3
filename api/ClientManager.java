@@ -1,5 +1,8 @@
-/**
- * ClientManager.java
+/*
+CSci364 - HW3, ClientManager.java
+Patrick Dougherty
+patrick.r.dougherty@und.edu
+26Mar2020
  */
 package api;
 
@@ -50,9 +53,9 @@ public interface ClientManager extends Remote {
 	/**
 	 * Gets the score for a specified client.
 	 * 
-	 * @param userid the client name
+	 * @param userId the client name
 	 * @return the client's current score
 	 * @throws RemoteException if userId is unknown
 	 */
-	public float getScore(String userId) throws RemoteException;
+	public int getScore(String userId) throws RemoteException;
 }
